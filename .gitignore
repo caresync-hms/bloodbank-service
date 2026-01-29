@@ -1,0 +1,13 @@
+# Build outputs
+bin/
+obj/
+.vs/
+
+# User-specific files
+*.user
+
+# Firebase credentials (DO NOT COMMIT)
+bloodbankfirebase-*.json
+
+# Logs
+*.log
