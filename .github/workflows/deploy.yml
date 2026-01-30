@@ -18,7 +18,6 @@ jobs:
 
       - name: Build & Push
         run: |
-          mvn clean package -DskipTests
           docker build -t prathamaher/bloodbank-service:latest .
           docker push prathamaher/bloodbank-service:latest
 
