@@ -19,8 +19,8 @@ jobs:
       - name: Build & Push
         run: |
           mvn clean package -DskipTests
-          docker build -t prathamaher/hms-backend:latest .
-          docker push prathamaher/hms-backend:latest
+          docker build -t prathamaher/bloodbank-service:latest .
+          docker push prathamaher/bloodbank-service:latest
 
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v1
