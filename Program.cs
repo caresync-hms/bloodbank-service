@@ -11,12 +11,13 @@ namespace BloodBankService
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<BloodDbContext>(options =>
-    options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 36))
-        // ServerVersion.AutoDetect(
-        //     builder.Configuration.GetConnectionString("DefaultConnection")
-        )));
+                options.UseMySql(
+                    builder.Configuration.GetConnectionString("DefaultConnection"),
+                    new MySqlServerVersion(new Version(8, 0, 36))
+                )
+            );
+
+            
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowFrontend",
