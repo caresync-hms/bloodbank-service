@@ -28,8 +28,15 @@ namespace BloodBankService.Models
             : base(options)
         {
         }
-
         public DbSet<Donor> Donors { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Donor>().ToTable("donors");
+        }
+
+       
 
     }
 }

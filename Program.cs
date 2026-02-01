@@ -11,8 +11,11 @@ namespace BloodBankService
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<BloodDbContext>(options =>
-            options.UseSqlServer("Server=sqlserver,1433;Database=Emp;User Id=sa;Password=Bloodbank@123;TrustServerCertificate=True;"
-));
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        ServerVersion.AutoDetect(
+            builder.Configuration.GetConnectionString("DefaultConnection")
+        )));
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowFrontend",
@@ -35,31 +38,6 @@ namespace BloodBankService
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            //for auto db and table creation
-            // using (var scope = app.Services.CreateScope())
-            // {
-            //     var db = scope.ServiceProvider.GetRequiredService<BloodDbContext>();
-            
-            //     var retries = 10;
-            //     while (retries > 0)
-            //     {
-            //         try
-            //         {
-            //             db.Database.Migrate();
-            //             break;
-            //         }
-            //         catch (Exception ex)
-            //         {
-            //             retries--;
-            //             if (retries == 0) throw;
-            
-            //             Thread.Sleep(5000);
-            //         }
-            //     }
-            // }
-
-
 
 
             app.UseHttpsRedirection();
