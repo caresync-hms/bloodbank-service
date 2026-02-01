@@ -11,7 +11,7 @@ namespace BloodBankService
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<BloodDbContext>(options =>
-            options.UseSqlServer("DefaultConnection": "Server=sqlserver,1433;Database=Emp;User Id=sa;Password=Bloodbank@123;TrustServerCertificate=True;"
+            options.UseSqlServer("Server=sqlserver,1433;Database=Emp;User Id=sa;Password=Bloodbank@123;TrustServerCertificate=True;"
 ));
             builder.Services.AddCors(options =>
             {
