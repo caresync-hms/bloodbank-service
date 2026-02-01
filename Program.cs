@@ -11,7 +11,8 @@ namespace BloodBankService
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<BloodDbContext>(options =>
-            options.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=Emp;Integrated Security=True;Encrypt=True"));
+            options.UseSqlServer("DefaultConnection": "Server=sqlserver,1433;Database=Emp;User Id=sa;Password=Bloodbank@123;TrustServerCertificate=True;"
+));
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowFrontend",
