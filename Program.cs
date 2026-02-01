@@ -40,8 +40,25 @@ namespace BloodBankService
             using (var scope = app.Services.CreateScope())
             {
                 var db = scope.ServiceProvider.GetRequiredService<BloodDbContext>();
-                db.Database.Migrate();
+            
+                var retries = 10;
+                while (retries > 0)
+                {
+                    try
+                    {
+                        db.Database.Migrate();
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        retries--;
+                        if (retries == 0) throw;
+            
+                        Thread.Sleep(5000);
+                    }
+                }
             }
+
 
 
 
