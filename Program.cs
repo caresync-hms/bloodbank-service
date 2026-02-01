@@ -41,14 +41,6 @@ namespace BloodBankService
                 app.UseHsts();
             }
 
-            using (var scope = app.Services.CreateScope())
-            {
-                var db = scope.ServiceProvider.GetRequiredService<BloodDbContext>();
-                db.Database.EnsureCreated();
-            }
-
-
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
