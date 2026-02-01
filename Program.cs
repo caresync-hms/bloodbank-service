@@ -37,27 +37,27 @@ namespace BloodBankService
             }
 
             //for auto db and table creation
-            using (var scope = app.Services.CreateScope())
-            {
-                var db = scope.ServiceProvider.GetRequiredService<BloodDbContext>();
+            // using (var scope = app.Services.CreateScope())
+            // {
+            //     var db = scope.ServiceProvider.GetRequiredService<BloodDbContext>();
             
-                var retries = 10;
-                while (retries > 0)
-                {
-                    try
-                    {
-                        db.Database.Migrate();
-                        break;
-                    }
-                    catch (Exception ex)
-                    {
-                        retries--;
-                        if (retries == 0) throw;
+            //     var retries = 10;
+            //     while (retries > 0)
+            //     {
+            //         try
+            //         {
+            //             db.Database.Migrate();
+            //             break;
+            //         }
+            //         catch (Exception ex)
+            //         {
+            //             retries--;
+            //             if (retries == 0) throw;
             
-                        Thread.Sleep(5000);
-                    }
-                }
-            }
+            //             Thread.Sleep(5000);
+            //         }
+            //     }
+            // }
 
 
 
